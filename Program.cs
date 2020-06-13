@@ -6,14 +6,7 @@ namespace ConsoleAppLearning
     {
         static void Main(string[] args)
         {
-            Human person = new Human();
-            //person.Name = "Josh";
-            //person.Surname = "Lopez";
-            person.Age = 17;
-            person.EyeColor = "Blue";
-            person.Introduce();
-
-            //person.Name = "James";
+            Human person = new Human("Josh", "Brown", 17, "Blue");
             person.Introduce();
 
             person.AddNumbers(32, 968);
