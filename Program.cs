@@ -13,21 +13,21 @@ namespace ConsoleAppLearning
             persons.Add(new Human("Anne", "Marie", 5, "Brown"));
             persons.Add(new Human("Talia", "Williams", 21, "Gray"));
 
-            persons[1].SetAge(58);
-
-            //persons[0].Introduce();
-            //persons[1].Introduce();
-            //persons[2].Introduce();
-
-            //for(int i = 0; i < persons.Count; i++) //Loop
-            //{
-            //    persons[i].Introduce();
-            //}
+            //persons[1].SetAge(58);
 
             foreach(var person in persons)
             {
                 person.Introduce();
             }
+
+            //create some bank accounts here
+            List<BankAccount> accounts = new List<BankAccount>();
+            accounts.Add(new BankAccount("Josh", 200, "EUR"));
+            accounts[0].PrintInfo();
+            accounts.Add(new BankAccount("Karl", 5000, "EUR"));
+            accounts[1].PrintInfo();
+            accounts.Add(new BankAccount("Anne", 76, "EUR"));
+            accounts[2].PrintInfo();
         }
     }
 }
