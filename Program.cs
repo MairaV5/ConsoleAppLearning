@@ -23,11 +23,30 @@ namespace ConsoleAppLearning
             //create some bank accounts here
             List<BankAccount> accounts = new List<BankAccount>();
             accounts.Add(new BankAccount("Josh", 200, "EUR"));
-            accounts[0].PrintInfo();
+            //accounts[0].PrintInfo();
             accounts.Add(new BankAccount("Karl", 5000, "EUR"));
-            accounts[1].PrintInfo();
-            accounts.Add(new BankAccount("Anne", 76, "EUR"));
-            accounts[2].PrintInfo();
+            //accounts[1].PrintInfo();
+            accounts.Add(new BankAccount("Anne", 30, "EUR"));
+            //accounts[2].PrintInfo();
+
+            foreach (var account in accounts)
+            {
+                account.PrintInfo();
+            }
+
+            //make some transactions on Josh's account
+            accounts[0].MakeDeposit(-100, "Birthday gift");
+            accounts[0].MakeDeposit(400, "First salary");
+            accounts[0].MakeDeposit(50, "Bonus");
+            Console.WriteLine(accounts[0].Balance);
+            accounts[0].MakeWithdrawal(2500, "online course");
+            Console.WriteLine(accounts[0].Balance);
+
+            //transaction on Karls account
+            //Console.WriteLine(accounts[1].Balance);
+            //accounts[1].MakeDeposit(5000, "Salary");
+            //Console.WriteLine(accounts[1].Balance);
+
         }
     }
 }

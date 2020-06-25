@@ -7,10 +7,23 @@ namespace ConsoleAppLearning
     class BankAccount
     {
 
+        private List<Transaction> transactions = new List<Transaction>();
+
         private static int accountNumber = 123;
         public string Number { get; }
         public string Owner { get; }
-        public decimal Balance { get; }
+        public decimal Balance
+        {
+            get
+            {
+                decimal balance = 0;
+                foreach(var t in transactions)
+                {
+                    balance += t.Amount;
+                }
+                return balance;
+            }
+        }
         public DateTime Created { get; }
         public string Currency { get; }
 
@@ -19,7 +32,7 @@ namespace ConsoleAppLearning
             this.Number = accountNumber.ToString();
             accountNumber++;
             this.Owner = owner;
-            this.Balance = balance;
+            this.MakeDeposit(balance, "Initial balance");
             this.Currency = currency;
             this.Created = DateTime.Now;
         }
@@ -29,5 +42,35 @@ namespace ConsoleAppLearning
             Console.WriteLine($"Account number {this.Number} created on {this.Created.ToShortDateString()} belongs to {this.Owner} and has a balance {this.Balance}");
         }
 
+        public void MakeDeposit(decimal amount, string note)
+        {
+            if (amount < 0)
+            {
+                Console.WriteLine("Amount must be positive.");
+                return;
+            }
+            Transaction deposit = new Transaction(amount, note);
+            transactions.Add(deposit);
+        }
+
+        public void MakeWithdrawal(decimal amount, string note)
+        {
+            if(amount < 0)
+            {
+                Console.WriteLine("Amount must be positive.");
+                return;
+            }
+            else if(amount > this.Balance)
+            {
+                Console.WriteLine("You do not have sufficient funds");
+                return;
+            }
+            Transaction withdrawal = new Transaction(-amount, note);
+            transactions.Add(withdrawal);
+        }
+
+        //MakeDeposit()
+        //Makewithdrawal()
+        //Transacions class
     }
 }
